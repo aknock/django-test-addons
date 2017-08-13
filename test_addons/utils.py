@@ -9,7 +9,7 @@ from django.utils.module_loading import import_module
 
 # third-party django imports
 from mongoengine.connection import (DEFAULT_CONNECTION_NAME, _connections, get_connection,
-    _dbs)
+                                    _dbs)
 
 # inter-app imports
 
@@ -64,19 +64,19 @@ class CopyLargeFileMixin(ClearFileStorageMixin):
     TEST_STORAGE_DIRECTORY = None
 
     def tearDown(self):
-	if not self.STORED_FILE_PATH:
+        if not self.STORED_FILE_PATH:
             return super(CopyLargeFileMixin, self).tearDown()
 
-	super(CopyLargeFileMixin, self).tearDown()
-	shutil.copy(self.STORED_FILE_PATH, self.TEST_STORAGE_DIRECTORY)
+        super(CopyLargeFileMixin, self).tearDown()
+        shutil.copy(self.STORED_FILE_PATH, self.TEST_STORAGE_DIRECTORY)
 
     @classmethod
     def tearDownAll(cls):
-	if not self.STORED_FILE_PATH:
-	    return super(CopyLargeFileMixin, cls).tearDownAll()
-        
-	super(CopyLargeFileMixin, cls).tearDownAll()
-	shutil.copy(self.STORED_FILE_PATH, self.TEST_STORAGE_DIRECTORY)
+        if not self.STORED_FILE_PATH:
+            return super(CopyLargeFileMixin, cls).tearDownAll()
+
+        super(CopyLargeFileMixin, cls).tearDownAll()
+        shutil.copy(self.STORED_FILE_PATH, self.TEST_STORAGE_DIRECTORY)
 
 
 class ModifySessionMixin(object):
